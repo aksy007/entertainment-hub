@@ -19,6 +19,7 @@ const Search = () => {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
   const [numOfPages, setNumOfPages] = useState();
+  const API_KEY = 'c4c6e7e5a75d36c8e222503eef8dd0f7';
 
   const darkTheme = createMuiTheme({
     palette: {
@@ -33,7 +34,7 @@ const Search = () => {
     try {
       const { data } = await axios.get(
         `https://api.themoviedb.org/3/search/${type ? "tv" : "movie"}?api_key=${
-          process.env.REACT_APP_API_KEY}&language=en-US&query=${searchText}&page=${page}&include_adult=false`
+          API_KEY}&language=en-US&query=${searchText}&page=${page}&include_adult=false`
       );
       setContent(data.results);
       setNumOfPages(data.total_pages);
