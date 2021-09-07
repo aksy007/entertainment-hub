@@ -8,10 +8,10 @@ const Trending = () => {
   const [page, setPage] = useState(1);
   const [content, setContent] = useState([]);
   const [numOfPages,setNumOfPages] = useState(0);
-
+  const API_KEY = 'c4c6e7e5a75d36c8e222503eef8dd0f7';
   const fetchTrending = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/trending/all/day?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
+      `https://api.themoviedb.org/3/trending/all/day?api_key=${API_KEY}&page=${page}`
     );
     setNumOfPages(data.total_pages);
     setContent(data.results);
